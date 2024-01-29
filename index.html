@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameAdvisor</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/swiper@11.0.5/swiper-bundle.min.css" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <div class="nav container">
+        <a href="#" class="logo">Game<span>Advisor</span></a>
+        <div class="nav-icons">
+            <i class="bx bx-bell bx-tada" id="bell-icon"></i>
+            <i class='bx bx-user-circle'></i>
+            <div class="menu-icon">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+        <div class="menu">
+            <img src="img/menu.png" alt="">
+            <div class="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#new">Ultime Uscite</a></li>
+                <li><a href="#contatti">Contattaci</a></li>
+            </div>
+        </div>
+    </div>
+    <div class="notification">
+        <div class="notification-box"></div>
+        <div class="notification-box"></div>
+    </div>
+</header>
+
+<section class="home container" id="home">
+    <img id="mainImage" src="img/default.jpg" alt="Main Image">
+    <div class="home-text"></div>
+</section>
+
+<section class="trending container" id="trending">
+    <div class="heading">
+        <i class="bx bxs-flame"></i>
+        <h2>Giochi In Tendenza</h2>
+    </div>
+    <div class="trending-content swiper">
+        <div class="swiper-wrapper" >
+            <div class="swiper-slide">
+                <div class="box">
+
+                <ul id="gameList" class="slider"> </ul>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</section>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11.0.5/swiper-bundle.min.js"></script>
+<script src="./js/index.js"></script>
+
+</body>
+</html>
