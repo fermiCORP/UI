@@ -1,80 +1,161 @@
 const apiKey = '360b3c1b1c224703b27b6ca8f75dafb8';
 const gameContainer = document.getElementById('gameContainer');
 
-
-function displayGameDetails(game) {
-
-    const titleElement = document.createElement('h1');
-    titleElement.textContent = game.name;
-
-    const descriptionElement = document.createElement('p');
-    descriptionElement.textContent = game.description;
-
-    const releaseDateElement = document.createElement('p');
-    releaseDateElement.textContent = `Released on: ${game.released}`;
-
-    const ratingElement = document.createElement('p');
-    ratingElement.textContent = `Rating: ${game.rating}`;
-
-    const developerElement = document.createElement('p');
-    developerElement.textContent = `Developer: ${game.developers ? game.developers[0]?.name : 'N/A'}`;
-
-    const publisherElement = document.createElement('p');
-    publisherElement.textContent = `Publisher: ${game.publishers ? game.publishers[0]?.name : 'N/A'}`;
-
-    const genreElement = document.createElement('p');
-    genreElement.textContent = `Genre: ${game.genres ? game.genres.map(genre => genre.name).join(', ') : 'N/A'}`;
-
-    const platformElement = document.createElement('p');
-    platformElement.textContent = `Platform: ${game.platforms ? game.platforms.map(platform => platform.platform.name).join(', ') : 'N/A'}`;
-
-    const storesElement = document.createElement('p');
-    if (game.stores && game.stores.length > 0) {
-        const storeLinks = game.stores
-            .filter(store => store.store && store.store.name)
-            .map(store => `<span class="store-link" data-url="${store.url}">${store.store.name}</span>`);
-        storesElement.innerHTML = `Available on: ${storeLinks.length > 0 ? storeLinks.join(', ') : 'N/A'}`;
-    } else {
-        storesElement.textContent = 'Stores: N/A';
-    }
-
-    storesElement.addEventListener('click', function(event) {
-        const target = event.target;
-        if (target.classList.contains('store-link')) {
-            const storeUrl = target.getAttribute('data-url');
-            if (storeUrl) {
-                window.open(storeUrl, '_blank');
-            }
-        }
-    });
-
-    const tagsElement = document.createElement('p');
-    tagsElement.textContent = `Tags: ${game.tags ? game.tags.map(tag => tag.name).join(', ') : 'N/A'}`;
-
-
-    document.getElementById('gameContainer').appendChild(titleElement);
-    document.getElementById('gameContainer').appendChild(descriptionElement);
-    document.getElementById('gameContainer').appendChild(releaseDateElement);
-    document.getElementById('gameContainer').appendChild(ratingElement);
-    document.getElementById('gameContainer').appendChild(developerElement);
-    document.getElementById('gameContainer').appendChild(publisherElement);
-    document.getElementById('gameContainer').appendChild(genreElement);
-    document.getElementById('gameContainer').appendChild(platformElement);
-    document.getElementById('gameContainer').appendChild(storesElement);
-    document.getElementById('gameContainer').appendChild(tagsElement);
-
-
-}
-
-
 function getGameIdFromUrl() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     return urlParams.get('gameId');
 }
 
+function createNameContainer(gameName) {
+    const nameContainer = document.createElement('div');
+    nameContainer.className = 'Name Container';
 
-function getGameDetails(gameId) {
+    const heading = document.createElement('h2');
+    heading.textContent = 'Nome';
+    heading.style.display = 'inline-flex';
+    heading.style.fontSize = '1.4rem';
+    heading.style.fontWeight = '500';
+    heading.style.borderBottom = '4px solid var(--main-color)';
+
+    const gameNameParagraph = document.createElement('p');
+    gameNameParagraph.textContent = gameName;
+    gameNameParagraph.style.fontSize = '0.938rem';
+    gameNameParagraph.style.marginTop = '1rem';
+    gameNameParagraph.style.textAlign = 'justify';
+
+    nameContainer.appendChild(heading);
+    nameContainer.appendChild(gameNameParagraph);
+
+    gameContainer.appendChild(nameContainer);
+}
+
+function createInfoDiv(className, headingText, infoText) {
+    const infoContainer = document.createElement('div');
+    infoContainer.className = className;
+
+    const heading = document.createElement('h2');
+    heading.textContent = headingText;
+    heading.style.display = 'inline-flex';
+    heading.style.fontSize = '1.4rem';
+    heading.style.fontWeight = '500';
+    heading.style.borderBottom = '4px solid var(--main-color)';
+    infoContainer.appendChild(heading);
+
+    const infoParagraph = document.createElement('p');
+    infoParagraph.textContent = infoText;
+    infoParagraph.style.fontSize = '0.938rem';
+    infoParagraph.style.marginTop = '1rem';
+    infoParagraph.style.textAlign = 'justify';
+    infoContainer.appendChild(infoParagraph);
+
+    gameContainer.appendChild(infoContainer);
+}
+
+// Seleziona tutti gli elementi con la classe .name
+const nameElements = document.querySelectorAll('.name p');
+
+// Applica le proprietà di stile a ciascun elemento
+nameElements.forEach(element => {
+    element.style.fontSize = '0.938rem';
+    element.style.marginTop = '1rem';
+    element.style.textAlign = 'justify';
+});
+
+function displayGamePlatforms(platforms) {
+    const platformsElement = document.createElement('p');
+    platformsElement.textContent = `Platforms: ${platforms ? platforms.map(platform => platform.platform.name).join(', ') : 'N/A'}`;
+    gameContainer.appendChild(platformsElement);
+}
+
+function getGameImageUrl(game) {
+    return game.background_image || 'img/default.jpg';
+}
+
+function createParagraph(text) {
+    const paragraph = document.createElement('p');
+    paragraph.textContent = text;
+    gameContainer.appendChild(paragraph);
+}
+
+function displayGameScreenshots(screenshots) {
+    const screenshotsContainer = document.createElement('div');
+    screenshotsContainer.className = 'screenshots-container';
+
+    screenshots.forEach(screenshot => {
+        const screenshotImage = document.createElement('img');
+        screenshotImage.src = screenshot.image;
+        screenshotImage.alt = 'Screenshot';
+
+        screenshotsContainer.appendChild(screenshotImage);
+    });
+
+    gameContainer.appendChild(screenshotsContainer);
+}
+
+function displayGameDetails(game) {
+    console.log('Game Details:', game);
+
+    // Prima richiesta per ottenere il nome del gioco
+    if (game.id) {
+        axios.get(`https://api.rawg.io/api/games/${game.id}?key=${apiKey}`)
+            .then(response => {
+                const gameDetails = response.data;
+                game.name = gameDetails.name; // Aggiorna il nome del gioco
+                displayGameDetailsWithUpdatedName(game);
+            })
+            .catch(error => {
+                console.error('Errore nella richiesta API per il nome del gioco:', error);
+                displayGameDetailsWithUpdatedName(game);
+            });
+    } else {
+        displayGameDetailsWithUpdatedName(game);
+    }
+}
+
+function displayGameDetailsWithUpdatedName(game) {
+    const backgroundImageElement = document.createElement('img');
+    backgroundImageElement.src = getGameImageUrl(game);
+    backgroundImageElement.className = 'foto-container';
+    backgroundImageElement.style.width = '100%';
+    backgroundImageElement.style.aspectRatio = '16 / 9';
+    gameContainer.appendChild(backgroundImageElement);
+
+    createNameContainer(game.name);
+
+    // Creazione dei div con gli h2 e p richiesti
+    createInfoDiv('released', 'Rilascio', game.released);
+    createInfoDiv('rating', 'valutazione', game.rating);
+    createInfoDiv('developer', 'Sviluppatore', game.developers ? game.developers[0]?.name : 'N/A');
+    createInfoDiv('publisher', 'Publicatore', game.publishers ? game.publishers[0]?.name : 'N/A');
+    createInfoDiv('genres', 'Genere', game.genres ? game.genres.map(genre => genre.name).join(', ') : 'N/A');
+
+    // Creazione del div con la classe 'description'
+    createInfoDiv('description', 'Storia del gioco', game.description_raw || 'N/A');
+
+    // Altre parti della funzione...
+
+    if (game.id) {
+        axios.get(`https://api.rawg.io/api/games/${game.id}/screenshots?key=${apiKey}`)
+            .then(response => {
+                const screenshots = response.data.results;
+                if (screenshots && screenshots.length > 0) {
+                    displayGameScreenshots(screenshots);
+                } else {
+                    createParagraph('Screenshots: N/A');
+                }
+            })
+            .catch(error => {
+                console.error('Errore nella richiesta API per gli screenshot:', error);
+            });
+    } else {
+        createParagraph('Screenshots: N/A');
+    }
+
+    // Altre parti della funzione...
+}
+
+function getAndDisplayGameDetails(gameId) {
     axios.get(`https://api.rawg.io/api/games/${gameId}?key=${apiKey}`)
         .then(response => {
             const gameDetails = response.data;
@@ -85,8 +166,7 @@ function getGameDetails(gameId) {
         });
 }
 
-
 const gameId = getGameIdFromUrl();
 if (gameId) {
-    getGameDetails(gameId);
+    getAndDisplayGameDetails(gameId);
 }
