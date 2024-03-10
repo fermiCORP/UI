@@ -1,279 +1,568 @@
+/* Importa il font 'Poppins' dalla libreria di Google Fonts con varie varianti di peso */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-*{
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
-    box-sizing: border-box;
-    list-style: none;
-    text-decoration: none;
-    scroll-padding: 2rem;
+
+/* Reset di base per tutti gli elementi della pagina */
+* {
+    font-family: 'Poppins', sans-serif; /* Imposta il font per tutti gli elementi */
+    margin: 0; /* Reset del margine */
+    padding: 0; /* Reset del padding */
+    scroll-behavior: smooth; /* Aggiunge uno scorrimento fluido */
+    box-sizing: border-box; /* Utilizza il modello box-sizing border-box */
+    list-style: none; /* Rimuove i punti elenco predefiniti */
+    text-decoration: none; /* Rimuove le decorazioni del testo predefinite */
+    scroll-padding: 2rem; /* Aggiunge uno spazio di padding durante lo scorrimento */
 }
 
-:root{
-    --main-color: #fa5353;
-    --dark-color: #1b182b;
-    --light-color: #322f40;
-    --text-color: hsl(0,0%,91%);
-
+/* Definizione delle variabili di colore */
+:root {
+    --main-color: #fa5353; /* Colore principale */
+    --dark-color: #1b182b; /* Colore scuro di sfondo */
+    --light-color: #322f40; /* Colore chiaro di sfondo */
+    --text-color: hsl(0,0%,91%); /* Colore del testo */
 }
 
-::selection{
-    color: var(--text-color);
-    background: var(--main-color);
+/* Stile della selezione del testo */
+::selection {
+    color: var(--text-color); /* Colore del testo durante la selezione */
+    background: var(--main-color); /* Colore di sfondo durante la selezione */
 }
 
-section{
-    padding: 4rem 0 3rem;
+/* Stile delle sezioni della pagina */
+section {
+    padding: 4rem 0 3rem; /* Aggiunge spazio interno alle sezioni */
 }
 
-img{
-    width: 100%;
+/* Stile delle immagini */
+img {
+    width: 100%; /* Assicura che le immagini si adattino al loro contenitore */
 }
 
-body{
-    color: var(--text-color);
-    background: var(--dark-color);
+/* Stile del corpo della pagina */
+body {
+    color: var(--text-color); /* Colore del testo */
+    background: var(--dark-color); /* Colore di sfondo */
 }
 
-
+/* Stile del contenitore principale */
 .container {
-    max-width: 1068px;
-    margin: auto;
-    width: 100%;
+    max-width: 1068px; /* Larghezza massima del contenitore */
+    margin: auto; /* Centrato orizzontalmente nella pagina */
+    width: 100%; /* Occupa l'intera larghezza del contenitore genitore */
 }
 
-header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: var(--dark-color);
-    z-index: 100;
+/* Stile dell'intestazione */
+header {
+    position: fixed; /* Posizionato in modo fisso in alto */
+    top: 0; /* Allineato in alto */
+    left: 0; /* Allineato a sinistra */
+    width: 100%; /* Larghezza del 100% */
+    background: var(--dark-color); /* Colore di sfondo */
+    z-index: 100; /* Indice di sovrapposizione */
 }
 
+/* Stile della barra di navigazione */
 .nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px 0;
+    display: flex; /* Mostra gli elementi in linea */
+    align-items: center; /* Allineamento verticale */
+    justify-content: center; /* Allineamento orizzontale */
+    padding: 16px 0; /* Padding */
 }
 
+/* Stile del logo */
 .logo {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--text-color);
-    text-transform: uppercase;
-    margin: 0 auto 0 0;
+    font-size: 1.4rem; /* Dimensione del font */
+    font-weight: 600; /* Spessore del font */
+    color: var(--text-color); /* Colore del testo */
+    text-transform: uppercase; /* Trasforma il testo in maiuscolo */
+    margin: 0 auto 0 0; /* Margini */
 }
 
-.logo span{
-   color: var(--main-color);
+/* Stile delle icone di navigazione */
+.nav-icons {
+    display: flex; /* Mostra gli elementi in linea */
+    align-items: center; /* Allineamento verticale */
+    column-gap: 1rem; /* Spazio tra le colonne */
 }
 
-.nav-icons{
-    display: flex;
-    align-items: center;
-    column-gap: 1rem;
+/* Stile delle icone di navigazione */
+.nav-icons .bx {
+    font-size: 20px; /* Dimensione dell'icona */
+    height: 44px; /* Altezza */
+    width: 44px; /* Larghezza */
+    display: grid; /* Mostra come griglia */
+    place-items: center; /* Centra gli elementi */
+    color: var(--text-color); /* Colore del testo */
+    background: var(--light-color); /* Colore di sfondo */
+    border-radius: 50%; /* Bordo arrotondato */
+    cursor: pointer; /* Cambia il cursore al passaggio sopra */
 }
 
-.nav-icons .bx{
-    font-size: 20px;
-    height: 44px;
-    width: 44px;
-    display: grid;
-    place-items: center;
-    color: var(--text-color);
-    background: var(--light-color);
-    border-radius: 50%;
-    cursor: pointer;
+/* Stile dell'icona della campana */
+#bell-icon {
+    position: relative; /* Posizione relativa */
 }
 
-#bell-icon{
-    position: relative;
+/* Stile del punto rosso sull'icona della campana */
+#bell-icon span {
+    content: ""; /* Contenuto generico */
+    width: 5px; /* Larghezza */
+    height: 5px; /* Altezza */
+    border-radius: 50%; /* Bordo arrotondato */
+    background: var(--main-color); /* Colore */
+    position: absolute; /* Posizione assoluta */
+    top: 10px; /* Posizionato dall'alto */
+    right: 14px; /* Posizionato da destra */
 }
 
-#bell-icon span{
-    content:"";
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--main-color);
-    position: absolute;
-    top: 10px;
-    right: 14px;
+
+/* Stile dell'icona del menu */
+.menu-icon {
+    display: flex; /* Mostra l'icona del menu come un elemento flessibile */
+    flex-direction: column; /* Imposta la direzione dei figli come colonna */
+    align-items: center; /* Allinea i figli verticalmente al centro */
+    justify-content: center; /* Allinea i figli orizzontalmente al centro */
+    row-gap: 5px; /* Spazio tra le righe dei figli */
+    height: 44px; /* Altezza dell'icona del menu */
+    width: 44px; /* Larghezza dell'icona del menu */
+    border-radius: 50%; /* Bordo arrotondato per creare una forma circolare */
+    background: var(--light-color); /* Colore di sfondo dell'icona del menu */
+    cursor: pointer; /* Cambia il cursore quando si passa sopra l'icona */
+    z-index: 200; /* Imposta lo z-index per sovrapporre ad altri elementi */
+    transition: 0.3s; /* Animazione della transizione per effetti visivi */
 }
 
-.menu-icon{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    row-gap: 5px;
-    height: 44px;
-    width: 44px;
-    border-radius: 50%;
-    background: var(--light-color);
-    cursor: pointer;
-    z-index: 200;
-    transition: 0.3s;
+/* Stile delle linee dell'icona del menu */
+.menu-icon div {
+    display: block; /* Mostra le linee come blocchi */
+    background: var(--text-color); /* Colore delle linee */
+    height: 2px; /* Altezza delle linee */
+    width: 25px; /* Lunghezza delle linee */
+    transition: 0.3s; /* Animazione della transizione per effetti visivi */
 }
 
-.menu-icon div{
-    display: block;
-    background: var(--text-color);
-    height: 2px;
-    width: 25px;
-    transition: 0.3s;
+/* Effetto di apertura del menu */
+.move .line1 {
+    transform: rotate(-45deg) translate(-5px, 5px); /* Ruota e trasla la prima linea per creare l'effetto di apertura */
 }
 
-.move .line1{
-    transform: rotate(-45deg) translate(-5px, 5px);
+.move .line2 {
+    opacity: 0; /* Rende invisibile la seconda linea per creare l'effetto di apertura */
 }
 
-.move .line2{
-    opacity: 0;
+.move .line3 {
+    transform: rotate(45deg) translate(-5px, -5px); /* Ruota e trasla la terza linea per creare l'effetto di apertura */
 }
 
-.move .line3{
-    transform: rotate(45deg) translate(-5px, -5px);
+/* Stile del menu a comparsa */
+.menu {
+    position: fixed; /* Posizione fissa rispetto alla finestra del browser */
+    left: 0; /* Allinea il menu a sinistra */
+    top: 0; /* Allinea il menu in alto */
+    width: 100%; /* Larghezza del 100% della finestra del browser */
+    height: 100vh; /* Altezza del 100% della viewport */
+    background: rgba(0, 0, 14, 0.9); /* Sfondo semi-trasparente */
+    z-index: 106; /* Imposta lo z-index per sovrapporre ad altri elementi */
+    display: flex; /* Mostra gli elementi del menu come flexbox */
+    align-items: center; /* Allinea i figli verticalmente al centro */
+    justify-content: space-between; /* Distribuisce gli elementi orizzontalmente */
+    transition: 0.5s; /* Animazione della transizione per effetti visivi */
+    clip-path: circle(0% at 100% 0%); /* Nasconde il menu */
 }
 
-.menu{
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0,0,14,0.9);
-    z-index: 106;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: 0.5s;
-    clip-path: circle(0% at 100% 0%);
+/* Stile del menu attivo */
+.menu.active {
+    clip-path: circle(144% at 100% 0%); /* Mostra il menu */
 }
 
-.menu.active{
-    clip-path: circle(144% at 100% 0%);
+/* Stile delle immagini nel menu */
+.menu img {
+    width: 700px; /* Imposta la larghezza delle immagini */
 }
 
-.menu img{
-    width: 700px;
+/* Stile della barra di navigazione nel menu */
+.navbar {
+    display: grid; /* Mostra gli elementi della barra di navigazione come griglia */
+    row-gap: 1rem; /* Spazio tra le righe */
+    text-align: right; /* Allinea il testo a destra */
+    padding-right: 2rem; /* Padding a destra */
 }
 
-.navbar{
-    display: grid;
-    row-gap: 1rem;
-    text-align: right;
-    padding-right: 2rem;
+/* Stile dei link nella barra di navigazione */
+.navbar a {
+    font-size: 1.6rem; /* Dimensione del font */
+    color: var(--text-color); /* Colore del testo */
+    font-weight: 500; /* Spessore del font */
+    transition: 0.2s; /* Animazione della transizione per effetti visivi */
 }
 
-.navbar a{
-    font-size: 1.6rem;
-    color: var(--text-color);
-    font-weight: 500;
-    transition: 0.2s;
+/* Effetto al passaggio del mouse sui link nella barra di navigazione */
+.navbar a:hover {
+    border-bottom: 4px solid var(--main-color); /* Aggiunge una sottolineatura al passaggio del mouse */
+    font-size: 1.8rem; /* Aumenta la dimensione del font al passaggio del mouse */
 }
 
-.navbar a:hover{
-    border-bottom: 4px solid var(--main-color);
-    font-size: 1.8rem;
-}
-
+/* Stile della notifica */
 .notification {
-    position: absolute;
-    top: 110%;
-    right: 5rem;
-    background: var(--light-color);
-    width: 300px;
-    height: 350px;
-    border-radius: 0.5rem;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
-    clip-path: circle(0% at 100% 0%);
+    position: absolute; /* Posizione assoluta rispetto al suo contenitore */
+    top: 110%; /* Spazio sopra la barra di navigazione */
+    right: 5rem; /* Spazio a destra */
+    background: var(--light-color); /* Colore di sfondo */
+    width: 300px; /* Larghezza */
+    height: 350px; /* Altezza */
+    border-radius: 0.5rem; /* Bordo arrotondato */
+    padding: 10px; /* Padding */
+    display: flex; /* Mostra gli elementi come flexbox */
+    flex-direction: column; /* Direzione dei figli come colonna */
+    row-gap: 1rem; /* Spazio tra le righe */
+    clip-path: circle(0% at 100% 0%); /* Nasconde la notifica */
 }
 
-.notification.active{
-    clip-path: circle(144% at 100% 0%);
-    transition: 0.3s ;
+/* Stile della notifica attiva */
+.notification.active {
+    clip-path: circle(144% at 100% 0%); /* Mostra la notifica */
+    transition: 0.3s; /* Animazione della transizione per effetti visivi */
 }
 
-.notification-box{
-    display: flex;
-    align-items: baseline;
-    column-gap:  1rem;
-    border-radius: 0.5rem;
-    background: var(--dark-color);
-    padding: 10px;
+/* Stile della casella della notifica */
+.notification-box {
+    display: flex; /* Mostra gli elementi come flexbox */
+    align-items: baseline; /* Allinea i figli rispetto alla linea di base */
+    column-gap: 1rem; /* Spazio tra le colonne */
+    border-radius: 0.5rem; /* Arrotondamento dei bordi a 0.5rem */
+    background: var(--dark-color); /* Colore di sfondo definito dalle variabili CSS */
+    padding: 10px; /* Spaziatura interna di 10px */
 }
 
-.box-color{
-    background: hsl(0,0%,100%,0.4);
+/* Stile per il colore di sfondo della classe box-color */
+.box-color {
+    background: hsl(0,0%,100%,0.4); /* Colore di sfondo bianco con opacità 0.4 */
 }
 
+/* Impostazioni di base per il layout e lo stile del contenitore principale */
 .home {
-    position: relative;
-    min-height: 540px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    margin-top: 5rem;
+    position: relative; /* Posizione relativa per posizionare correttamente gli elementi figlio */
+    min-height: 540px; /* Altezza minima del contenitore */
+    display: flex; /* Utilizzo del display flessibile per il layout dei contenuti */
+    align-items: center; /* Allineamento verticale del contenuto al centro */
+    justify-content: flex-end; /* Allineamento orizzontale del contenuto a destra */
+    margin-top: 5rem; /* Margine superiore */
 }
 
-.home img{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 1.4rem;
-    z-index: -1;
+/* Stile del testo all'interno del contenitore home */
+.home text {
+    padding-right: 4rem; /* Spaziatura a destra */
+    text-align: right; /* Allineamento del testo a destra */
 }
 
-.heading{
-    display: flex;
-    align-items: center;
-    column-gap: 1rem;
-    margin-bottom: 2rem;
+/* Stile del titolo all'interno del contenitore home */
+.home-text h1 {
+    font-size: 2.4rem; /* Dimensione del carattere */
+    text-transform: uppercase; /* Trasformazione del testo in maiuscolo */
+    color: var(--dark-color); /* Colore del testo definito dalle variabili CSS */
+    margin-bottom: 1rem; /* Margine inferiore */
 }
 
-.heading .bx{
-    font-size: 21px;
-    color: var(--text-color);
-    background: var(--main-color);
-    padding: 10px;
-    border-radius: 5rem;
+/* Stile del pulsante */
+.btn {
+    background: var(--main-color); /* Colore di sfondo definito dalle variabili CSS */
+    padding: 15px 20px; /* Spaziatura interna */
+    color: var(--text-color); /* Colore del testo definito dalle variabili CSS */
+    font-size: 1rem; /* Dimensione del carattere */
+    letter-spacing: 1px; /* Spaziatura tra le lettere */
+    font-weight: 500; /* Spessore del carattere */
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 25% 100%, 0 50%); /* Maschera di ritaglio per creare una forma personalizzata */
 }
 
-.heading h2{
-    font-size: 1.2rem;
-    font: 500;
+/* Effetto hover sul pulsante */
+.btn:hover {
+    background: var(--light-color); /* Cambio del colore di sfondo al passaggio del mouse */
+    transition: 0.3s all linear; /* Transizione fluida per una migliore esperienza utente */
 }
 
+/* Stile delle immagini all'interno del contenitore home */
+.home img {
+    position: absolute; /* Posizione assoluta per sovrapporre le immagini */
+    width: 100%; /* Larghezza al 100% per riempire il contenitore */
+    height: 100%; /* Altezza al 100% per riempire il contenitore */
+    object-fit: cover; /* Adattamento dell'immagine per coprire l'intero spazio del contenitore */
+    border-radius: 1.4rem; /* Arrotondamento dei bordi */
+    z-index: -1; /* Posizionamento in modo che le immagini siano dietro al contenuto */
+}
+
+/* Stile dell'intestazione */
+.heading {
+    display: flex; /* Utilizzo del display flessibile per il layout */
+    align-items: center; /* Allineamento verticale del contenuto */
+    column-gap: 1rem; /* Spaziatura tra le colonne */
+    margin-bottom: 2rem; /* Margine inferiore */
+}
+
+/* Stile dell'icona nell'intestazione */
+.heading .bx {
+    font-size: 21px; /* Dimensione dell'icona */
+    color: var(--text-color); /* Colore del testo definito dalle variabili CSS */
+    background: var(--main-color); /* Colore di sfondo definito dalle variabili CSS */
+    padding: 10px; /* Spaziatura interna */
+    border-radius: 5rem; /* Arrotondamento dei bordi */
+}
+
+/* Stile del sottotitolo nell'intestazione */
+.heading h2 {
+    font-size: 1.2rem; /* Dimensione del carattere */
+    font: 500; /* Peso del carattere */
+}
+
+/* Stile del contenitore box */
 .box {
-    position: relative;
-    width: 100%;
-    height: 350px;
-    border-radius: 0.5rem;
+    position: relative; /* Posizione relativa per posizionare correttamente gli elementi figlio */
+    width: 100%; /* Larghezza al 100% per riempire il contenitore genitore */
+    height: 350px; /* Altezza del contenitore */
+    border-radius: 0.5rem; /* Arrotondamento dei bordi */
+    object-fit: cover; /* Adattamento dell'immagine per coprire l'intero spazio del contenitore */
 }
 
-.box img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 0.5rem;
+/* Stile dell'immagine all'interno del contenitore box */
+.box img {
+    width: 100%; /* Larghezza al 100% per riempire il contenitore */
+    height: 100%; /* Altezza al 100% per riempire il contenitore */
+    padding: 10px; /* Spaziatura interna */
+    object-fit: cover; /* Adattamento dell'immagine per coprire l'intero spazio del contenitore */
+    border-radius: 1.5rem; /* Arrotondamento dei bordi */
 }
 
-.box .box-text{
-    position: absolute;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    padding: 10px;
-    background: hsl(227, 14%, 20%, 0.8);
-    backdrop-filter: blur(4px);
-    border-radius: 0.5rem;
+/* Stile del testo all'interno del contenitore box */
+.box .box-text {
+    position: absolute; /* Posizione assoluta per sovrapporre il testo sull'immagine */
+    width: 300px; /* Larghezza del contenitore del testo */
+    left: 0; /* Posizionamento a sinistra */
+    bottom: 0; /* Posizionamento in basso */
+    background: hsl(227, 14%, 20%, 0.8); /* Colore di sfondo con trasparenza */
+    backdrop-filter: blur(4px); /* Effetto di sfocatura sullo sfondo */
+    border-radius: 0.5rem; /* Arrotondamento dei bordi */
 }
 
+/* Stile per le immagini all'interno di slick-slide */
+.slick-slide img {
+    padding: 10px; /* Spaziatura interna di 10px */
+}
+
+/* Stile per il margine superiore del contenitore di nome */
+div.Name.Container {
+    margin-top: 2rem; /* Margine superiore di 2rem */
+}
+
+/* Stile per il margine superiore del contenitore del rating */
+div.rating {
+    margin-top: 2rem; /* Margine superiore di 2rem */
+}
+
+/* Stile per il margine superiore del contenitore della data di rilascio */
+div.released {
+    margin-top: 2rem; /* Margine superiore di 2rem */
+}
+
+/* Stile per il margine superiore del contenitore dello sviluppatore */
+div.developer {
+    margin-top: 2rem; /* Margine superiore di 2rem */
+}
+
+/* Stile per il margine superiore del contenitore dell'editore */
+div.publisher {
+    margin-top: 2rem; /* Margine superiore di 2rem */
+}
+
+/* Stile per il margine superiore del contenitore dei generi */
+div.genres {
+    margin-top: 2rem; /* Margine superiore di 2rem */
+}
+
+/* Stile per il margine superiore del contenitore della descrizione */
+div.description {
+    margin-top: 2rem; /* Margine superiore di 2rem */
+}
+
+/* Stile per il margine superiore del contenitore degli screenshot */
+div.screenshot-container {
+    margin-top: 2rem; /* Margine superiore di 2rem */
+}
+
+/* Stile per il contenitore degli screenshot */
+div.screenshot-content {
+    display: grid; /* Utilizzo del display grid per il layout */
+    grid-template-columns: repeat(auto-fit, minmax(250px, auto)); /* Colonne automatiche con larghezza minima di 250px */
+    gap: 10px; /* Spazio tra le colonne */
+    justify-content: center; /* Allineamento orizzontale al centro */
+    max-width: 800px; /* Larghezza massima del contenitore */
+    margin: auto; /* Margine automatico */
+    width: 100%; /* Larghezza del 100% */
+}
+
+/* Nascondi la scrollbar personalizzata per Chrome */
+html::-webkit-scrollbar {
+    display: none;
+}
+
+/* Stile per la barra di progressione */
+.progress {
+    position: fixed; /* Posizione fissa rispetto alla finestra */
+    top: 0; /* Distanza dalla parte superiore della finestra */
+    left: 0; /* Distanza dalla parte sinistra della finestra */
+    width: 100%; /* Larghezza del 100% */
+    height: 4px; /* Altezza della barra di progressione */
+    z-index: 300; /* Indice di profondità */
+}
+
+/* Stile per la barra di progressione */
+.progress-bar {
+    height: 4px; /* Altezza della barra di progressione */
+    background: var(--main-color); /* Colore di sfondo definito dalle variabili CSS */
+    width: 0%; /* Larghezza iniziale della barra di progressione */
+}
+
+/* Media query per le dimensioni dello schermo fino a 1080px */
+@media (max-width: 1080px) {
+    .container {
+        margin: 0 auto; /* Margine automatico */
+        width: 90%; /* Larghezza del 90% */
+    }
+
+    .nav {
+        padding: 10px 0; /* Spaziatura interna */
+    }
+
+    .notification {
+        right: 4rem; /* Distanza dalla parte destra */
+    }
+
+    .menu img {
+        width: 500px; /* Larghezza dell'immagine */
+    }
+
+    section {
+        padding: 3rem 0 2rem; /* Spaziatura interna */
+    }
+
+    .home {
+        margin-top: 4rem !important; /* Margine superiore di 4rem con priorità */
+        min-height: 440px; /* Altezza minima del contenitore home */
+    }
+
+    .home img {
+        border-radius: 1rem; /* Arrotondamento dei bordi */
+    }
+
+    .box .box-text {
+        width: 170px; /* Larghezza del testo del box */
+    }
+}
+
+
+
+/* Stili per schermi con larghezza massima di 774px */
+@media (max-width: 774px){
+    /* Posizionamento della notifica */
+    .notification{
+        right: 1rem;
+    }
+    /* Impostazione della larghezza dell'immagine nel menu */
+    .menu img{
+        width: 400px;
+    }
+    /* Modifica dell'altezza minima del contenitore home */
+    .home{
+        min-height: 300px;
+    }
+    /* Modifica dello stile del titolo all'interno del contenitore home */
+    .home-text h1{
+        font-size: 2rem; /* Dimensione del carattere */
+        text-transform: uppercase; /* Trasformazione del testo in maiuscolo */
+        color: var(--dark-color); /* Colore del testo definito dalle variabili CSS */
+        margin-bottom: 1rem; /* Margine inferiore */
+    }
+    /* Modifica dello stile del pulsante */
+    .btn{
+        padding: 12px 17px; /* Spaziatura interna */
+    }
+    /* Modifica della larghezza del contenitore del testo all'interno del box */
+    .box .box-text{
+        width: 150px; /* Larghezza del contenitore del testo */
+    }
+    /* Modifica della griglia delle immagini dello screenshot */
+    div.screenshot-content {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 300px)); /* Impostazione delle colonne della griglia */
+    }
+}
+
+/* Stili per schermi con larghezza massima di 560px */
+@media (max-width: 560px){
+    /* Nascondere l'immagine nel menu */
+    .menu img{
+        display: none;
+    }
+    /* Allineamento del menu */
+    .menu{
+        justify-content: flex-end;
+    }
+    /* Padding per la barra di navigazione */
+    .nav{
+        padding: 8px 0;
+    }
+    /* Modifica delle dimensioni delle icone di navigazione e del menu */
+    .nav-icons .bx,
+    .menu-icon{
+        height: 40px; /* Altezza */
+        width: 40px; /* Larghezza */
+    }
+    /* Modifica dell'altezza minima del contenitore home */
+    .home{
+        min-height: 240px;
+    }
+    /* Modifica dello stile del testo all'interno del contenitore home */
+    .home-text{
+        padding-right: 1rem; /* Spaziatura a destra */
+    }
+    /* Modifica delle dimensioni del testo generico */
+    p{
+        font-size: 0.875rem; /* Dimensione del carattere */
+    }
+}
+
+/* Stili per schermi con larghezza massima di 360px */
+@media (max-width: 360px){
+    /* Modifica della dimensione del logo */
+    .logo{
+        font-size: 1.2rem; /* Dimensione del carattere */
+    }
+    /* Modifica della dimensione del testo della barra di navigazione */
+    .navbar a{
+        font-size: 1.3rem; /* Dimensione del carattere */
+    }
+    /* Modifica della dimensione del testo della barra di navigazione al passaggio del mouse */
+    .navbar a:hover{
+        font-size: 1.4rem; /* Dimensione del carattere */
+    }
+    /* Modifica della larghezza della notifica */
+    .notification{
+        width: 270px; /* Larghezza */
+    }
+    /* Modifica dell'altezza minima del contenitore home */
+    .home{
+        min-height: 214px;
+    }
+    /* Modifica dello stile del titolo all'interno del contenitore home */
+    .home-text h1{
+        font-size: 1.4rem; /* Dimensione del carattere */
+    }
+    /* Modifica dello stile dell'icona nell'intestazione */
+    .heading .bx{
+        padding: 8px; /* Spaziatura interna */
+    }
+    /* Modifica dello stile del sottotitolo nell'intestazione */
+    .heading h2{
+        font-size: 1.1rem ; /* Dimensione del carattere */
+    }
+    /* Modifica dell'altezza del contenitore box */
+    .box{
+        height: 420px; /* Altezza */
+    }
+}

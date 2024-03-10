@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Giochi_Adventure.js</title>
+
+    <script src="../scripts/prettify/prettify.js"> </script>
+    <script src="../scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Giochi_Adventure.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Rappresenta un gioco di avventura.
+ */
+class GameAdventure {
+    /**
+     * Crea una nuova istanza di GameAdventure.
+     * @param {number} id - L'ID del gioco.
+     * @param {string} name - Il nome del gioco.
+     * @param {number} rating - Il rating del gioco.
+     * @param {Array} genres - Array dei generi del gioco.
+     * @param {string} background_image - L'URL dell'immagine di sfondo del gioco.
+     */
+    constructor(id, name, rating, genres, background_image) {
+        this.id = id;
+        this.name = name;
+        this.rating = rating;
+        this.genres = genres;
+        this.background_image = background_image;
+    }
+
+    /**
+     * Ottiene l'URL dell'immagine del gioco, restituendo un'immagine predefinita se non disponibile.
+     * @returns {string} L'URL dell'immagine del gioco.
+     */
+    getGameImageUrl() {
+        return this.background_image || 'img/default.jpg';
+    }
+}
+
+/**
+ * Gestisce la lista dei giochi di avventura.
+ */
+class AdventureGameList {
+    /**
+     * Crea una nuova istanza di AdventureGameList.
+     * @param {string} elementId - L'ID dell'elemento HTML in cui visualizzare i giochi.
+     * @param {Array} excludedGames - Array dei giochi esclusi.
+     */
+    constructor(elementId, excludedGames) {
+        this.element = document.getElementById(elementId);
+        this.excludedGames = excludedGames;
+    }
+
+    /**
+     * Crea un elemento della lista per un gioco.
+     * @param {GameAdventure} game - Il gioco da aggiungere alla lista.
+     * @returns {HTMLElement} L'elemento della lista creato.
+     */
+    createListItem(game) {
+        const listItem = document.createElement('li');
+        // Creazione degli elementi HTML per visualizzare le informazioni del gioco
+        // ...
+        return listItem;
+    }
+
+    /**
+     * Visualizza i giochi di avventura sulla pagina.
+     * @param {Array} games - Array dei giochi da visualizzare.
+     */
+    displayGames(games) {
+        // Filtra i giochi esclusi
+        const filteredGames = games.filter(game => !this.excludedGames.includes(game.name));
+        // Aggiungi i giochi alla lista
+        filteredGames.forEach(game => {
+            const listItem = this.createListItem(game);
+            this.element.appendChild(listItem);
+        });
+        // Inizializza lo slider per visualizzare i giochi
+        $('.slider3').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+        });
+    }
+}
+
+// Richiesta API per i giochi di avventura più popolari
+axios.get(`https://api.rawg.io/api/games?key=360b3c1b1c224703b27b6ca8f75dafb8&amp;genres=adventure&amp;ordering=-rating&amp;dates=2020-01-01,2023-12-31&amp;page_size=10`)
+    .then(response => {
+        // Mappa i dati dei giochi ottenuti dalla risposta API in oggetti GameAdventure
+        const games = response.data.results.map(game => new GameAdventure(game.id, game.name, game.rating, game.genres, game.background_image));
+        // Crea una nuova istanza di AdventureGameList e visualizza i giochi
+        const adventureGamesList = new AdventureGameList('GiochiAdventure', ['Shoot Shoot My Waifu', 'Grown-Up Titans ( Teen Titans)', 'The Coffin of Andy and Leyley', 'Sisterly Lust']);
+        adventureGamesList.displayGames(games);
+    })
+    .catch(error => {
+        console.error('Error fetching popular adventure games:', error);
+    });
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="../index.html">Home</a></h2>
+    <h3>Index Page Class</h3>
+    <ul>
+        <li><a href="IndexPage.html">Index</a></li>
+    </ul>
+    <h3>Game Details Class</h3>
+    <ul>
+        <li><a href="GameDetailsManager.html">GameSports</a></li>
+    </ul>
+    <h3>Trending Games Class</h3>
+    <ul>
+        <li><a href="TrendingGameList.html">TrendingGameList</a></li>
+        <li><a href="GameTrending.html">GameTrending</a></li>
+    </ul>
+    <h3>Adventure Games Class</h3>
+    <ul>
+        <li><a href="AdventureGameList.html">AdventureGameList</a></li>
+        <li><a href="GameAdventure.html">GameAdventure</a></li>
+    </ul>
+    <h3>Shooter Games Class</h3>
+    <ul>
+        <li><a href="GameShooter.html">GameShooter</a></li>
+        <li><a href="ShooterGameList.html">ShooterGameList</a></li>
+    </ul>
+    <h3>Sports Games Class</h3>
+    <ul>
+        <li><a href="GameSports.html">GameSports</a></li>
+        <li><a href="SportsGameList.html">SportsGameList</a></li>
+    </ul>
+    <h3>Login Class</h3>
+    <ul>
+        <li><a href="LoginManager.html">GameSports</a></li>
+    </ul>
+    <h3>OTP Verification Class</h3>
+    <ul>
+        <li><a href="OTPManager.html">GameSports</a></li>
+    </ul>
+</nav>
+
+<script> prettyPrint(); </script>
+<script src="../scripts/linenumber.js"> </script>
+</body>
+</html>

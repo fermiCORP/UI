@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --main-color: #fa5353;
+    --dark-color: #1b182b;
+    --light-color: #322f40;
+    --text-color: hsl(0, 0%, 91%);
+}
+
+h1 {
+    margin: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--dark-color);
+    background-size: cover;
+    height: 100vh;
+}
+
+/**
+ * Stile del card per l'autenticazione OTP.
+ */
+.otp-card {
+    text-align: center;
+    background-color: white;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 10px 40px -20px black;
+}
+
+/**
+ * Stile per i campi di input dell'OTP.
+ */
+.otp-card-inputs {
+    margin: 30px;
+    display: grid;
+    gap: 30px;
+    justify-content: center;
+    grid-template-columns: repeat(5, auto);
+}
+
+/**
+ * Stile per i singoli input dell'OTP.
+ */
+.otp-card-inputs input {
+    width: 60px;
+    height: 70px;
+    font-size: 35px;
+    text-align: center;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+
+/**
+ * Stile per lo stato di focus dell'input dell'OTP.
+ */
+.otp-card-inputs input:focus {
+    outline: 2px solid blueviolet;
+    border-color: transparent;
+}
+
+/**
+ * Stile per il pulsante di invio dell'OTP.
+ */
+.otp-card button {
+    background-color: blueviolet;
+    border: none;
+    padding: 15px 50px;
+    font-size: 18px;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+/**
+ * Stile per lo stato hover del pulsante di invio dell'OTP.
+ */
+.otp-card button:hover {
+    opacity: .9;
+}
+
+/**
+ * Stile per il pulsante di invio dell'OTP quando è disabilitato.
+ */
+.otp-card button[disabled] {
+    opacity: .6;
+    cursor: default;
+}

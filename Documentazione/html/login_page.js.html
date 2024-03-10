@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: login_page.js</title>
+
+    <script src="../scripts/prettify/prettify.js"> </script>
+    <script src="../scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: login_page.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Classe per gestire il login e la registrazione degli utenti.
+ */
+class LoginManager {
+    /**
+     * Crea un'istanza della classe LoginManager.
+     * @param {HTMLElement} loginBtn - Il pulsante per il login.
+     * @param {HTMLElement} registerBtn - Il pulsante per la registrazione.
+     * @param {HTMLElement} loginForm - Il modulo di login.
+     * @param {HTMLElement} registerForm - Il modulo di registrazione.
+     */
+    constructor(loginBtn, registerBtn, loginForm, registerForm) {
+        this.loginBtn = loginBtn;
+        this.registerBtn = registerBtn;
+        this.loginForm = loginForm;
+        this.registerForm = registerForm;
+
+        // Aggiungi gli ascoltatori di eventi ai pulsanti di login e registrazione
+        this.loginBtn.addEventListener('click', this.handleLoginButtonClick.bind(this));
+        this.registerBtn.addEventListener('click', this.handleRegisterButtonClick.bind(this));
+    }
+
+    /**
+     * Funzione per gestire il click sul pulsante di login.
+     */
+    handleLoginButtonClick() {
+        this.loginBtn.style.backgroundColor = "#21264D";
+        this.registerBtn.style.backgroundColor = "rgba(255 , 255 , 255, 0.2)";
+
+        this.loginForm.style.left = "50%";
+        this.registerForm.style.left = "-50%"
+
+        this.loginForm.style.opacity = 1;
+        this.registerForm.style.opacity = 0;
+
+        document.querySelector(".col-1").style.borderRadius = "0 30% 20% 0";
+    }
+
+    /**
+     * Funzione per gestire il click sul pulsante di registrazione.
+     */
+    handleRegisterButtonClick() {
+        this.loginBtn.style.backgroundColor = "rgba(255 , 255, 255, 0.2)";
+        this.registerBtn.style.backgroundColor = "#21264D";
+
+        this.loginForm.style.left = "150%";
+        this.registerForm.style.left = "50%"
+
+        this.loginForm.style.opacity = 0;
+        this.registerForm.style.opacity = 1;
+
+        document.querySelector(".col-1").style.borderRadius = "0 20% 30% 0";
+    }
+}
+
+// Elementi HTML
+const loginBtn = document.querySelector("#login");
+const registerBtn = document.querySelector("#register");
+const loginForm = document.querySelector(".login-form");
+const registerForm = document.querySelector(".register-form");
+
+// Istanzia la classe LoginManager
+const loginManager = new LoginManager(loginBtn, registerBtn, loginForm, registerForm);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="../index.html">Home</a></h2>
+    <h3>Index Page Class</h3>
+    <ul>
+        <li><a href="IndexPage.html">Index</a></li>
+    </ul>
+    <h3>Game Details Class</h3>
+    <ul>
+        <li><a href="GameDetailsManager.html">GameSports</a></li>
+    </ul>
+    <h3>Trending Games Class</h3>
+    <ul>
+        <li><a href="TrendingGameList.html">TrendingGameList</a></li>
+        <li><a href="GameTrending.html">GameTrending</a></li>
+    </ul>
+    <h3>Adventure Games Class</h3>
+    <ul>
+        <li><a href="AdventureGameList.html">AdventureGameList</a></li>
+        <li><a href="GameAdventure.html">GameAdventure</a></li>
+    </ul>
+    <h3>Shooter Games Class</h3>
+    <ul>
+        <li><a href="GameShooter.html">GameShooter</a></li>
+        <li><a href="ShooterGameList.html">ShooterGameList</a></li>
+    </ul>
+    <h3>Sports Games Class</h3>
+    <ul>
+        <li><a href="GameSports.html">GameSports</a></li>
+        <li><a href="SportsGameList.html">SportsGameList</a></li>
+    </ul>
+    <h3>Login Class</h3>
+    <ul>
+        <li><a href="LoginManager.html">GameSports</a></li>
+    </ul>
+    <h3>OTP Verification Class</h3>
+    <ul>
+        <li><a href="OTPManager.html">GameSports</a></li>
+    </ul>
+</nav>
+
+
+
+<script> prettyPrint(); </script>
+<script src="../scripts/linenumber.js"> </script>
+</body>
+</html>

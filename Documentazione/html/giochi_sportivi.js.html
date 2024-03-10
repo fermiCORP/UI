@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: giochi_sportivi.js</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+<div id="main">
+    <h1 class="page-title">Source: giochi_sportivi.js</h1>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+/**
+ * Rappresenta le caratteristiche di un gioco di tipo sportivo.
+ */
+class GameSports {
+    constructor(id, name, rating, genres, background_image) {
+        this.id = id;
+        this.name = name;
+        this.rating = rating;
+        this.genres = genres;
+        this.background_image = background_image;
+    }
+
+    getGameImageUrl() {
+        return this.background_image || 'img/default.jpg';
+    }
+}
+
+/**
+ * Rappresenta una lista di giochi di tipo sportivo.
+ */
+class SportsGameList {
+    constructor(elementId, excludedGames) {
+        this.element = document.getElementById(elementId);
+        this.excludedGames = excludedGames;
+    }
+
+    createListItem(game) {
+        const listItem = document.createElement('li');
+        const box = document.createElement('div');
+        box.className = 'box ';
+
+        const image = document.createElement('img');
+        image.src = game.getGameImageUrl();
+        image.alt = game.name;
+
+        const detailsLink = document.createElement('a');
+        detailsLink.href = `./php/dettagli.php?gameId=${game.id}`;
+        detailsLink.appendChild(image);
+        box.appendChild(detailsLink);
+
+        const textContainer = document.createElement('div');
+        textContainer.className = 'box-text';
+
+        const title = document.createElement('p');
+        title.textContent = game.name;
+        textContainer.appendChild(title);
+
+        const rating = document.createElement('p');
+        const ratingIcon = document.createElement('i');
+        ratingIcon.className = 'bx bxs-star';
+        rating.appendChild(ratingIcon);
+        rating.innerHTML += ` ${game.rating || 'N/A'}`;
+        textContainer.appendChild(rating);
+
+        const genre = document.createElement('p');
+        const genresLimit = 3;
+        genre.textContent = `Genre: ${game.genres ? game.genres.slice(0, genresLimit).map(genre => genre.name).join(', ') : 'N/A'}`;
+        textContainer.appendChild(genre);
+
+        box.appendChild(textContainer);
+        listItem.appendChild(box);
+
+        return listItem;
+    }
+
+    displayGames(games) {
+        const filteredGames = games.filter(game => !this.excludedGames.includes(game.name));
+        filteredGames.forEach(game => {
+            const listItem = this.createListItem(game);
+            this.element.appendChild(listItem);
+        });
+
+        $('.slider2').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+        });
+    }
+}
+
+axios.get(`https://api.rawg.io/api/games?key=360b3c1b1c224703b27b6ca8f75dafb8&amp;genres=sports&amp;ordering=-rating&amp;dates=2020-01-01,2023-12-31&amp;page_size=10`)
+    .then(response => {
+        const games = response.data.results.map(gameData => new GameSports(gameData.id, gameData.name, gameData.rating, gameData.genres, gameData.background_image));
+        const sportsGamesList = new SportsGameList('GiochiSportivi', ['Lista', 'Di', 'Giochi', 'Esclusi']);
+        sportsGamesList.displayGames(games);
+    })
+    .catch(error => {
+        console.error('Errore nella richiesta API per i giochi sportivi più popolari:', error);
+    });
+</code></pre>
+        </article>
+    </section>
+</div>
+
+<nav>
+    <h2><a href="../index.html">Home</a></h2>
+    <h3>Index Page Class</h3>
+    <ul>
+        <li><a href="IndexPage.html">Index</a></li>
+    </ul>
+    <h3>Game Details Class</h3>
+    <ul>
+        <li><a href="GameDetailsManager.html">GameSports</a></li>
+    </ul>
+    <h3>Trending Games Class</h3>
+    <ul>
+        <li><a href="TrendingGameList.html">TrendingGameList</a></li>
+        <li><a href="GameTrending.html">GameTrending</a></li>
+    </ul>
+    <h3>Adventure Games Class</h3>
+    <ul>
+        <li><a href="AdventureGameList.html">AdventureGameList</a></li>
+        <li><a href="GameAdventure.html">GameAdventure</a></li>
+    </ul>
+    <h3>Shooter Games Class</h3>
+    <ul>
+        <li><a href="GameShooter.html">GameShooter</a></li>
+        <li><a href="ShooterGameList.html">ShooterGameList</a></li>
+    </ul>
+    <h3>Sports Games Class</h3>
+    <ul>
+        <li><a href="GameSports.html">GameSports</a></li>
+        <li><a href="SportsGameList.html">SportsGameList</a></li>
+    </ul>
+    <h3>Login Class</h3>
+    <ul>
+        <li><a href="LoginManager.html">GameSports</a></li>
+    </ul>
+    <h3>OTP Verification Class</h3>
+    <ul>
+        <li><a href="OTPManager.html">GameSports</a></li>
+    </ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Mar 08 2024 19:53:15 GMT+0100 (Ora standard dell’Europa centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

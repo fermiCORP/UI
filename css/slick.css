@@ -1,0 +1,123 @@
+/* Slider */
+
+/* Impostazioni di base per lo slider */
+.slick-slider {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    /* Impedisce la selezione dell'intero slider */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* Disabilita la selezione del testo su iOS */
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    /* Abilita il trascinamento verticale su dispositivi touch */
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    /* Impedisce l'evidenziazione del tocco su dispositivi touch */
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Contenitore della lista degli slider */
+.slick-list {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Rimuove l'outline quando la lista degli slider ha il focus */
+.slick-list:focus {
+    outline: none;
+}
+
+/* Aggiunge un cursore di tipo "pointer" quando si trascina la lista degli slider */
+.slick-list.dragging {
+    cursor: pointer;
+    cursor: hand;
+}
+
+/* Trasformazione della traccia e del contenitore degli slider */
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+/* Impostazioni della traccia degli slider */
+.slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Pulizia float della traccia degli slider */
+.slick-track:before,
+.slick-track:after {
+    display: table;
+    content: '';
+}
+
+.slick-track:after {
+    clear: both;
+}
+
+/* Nasconde la traccia durante il caricamento */
+.slick-loading .slick-track {
+    visibility: hidden;
+}
+
+/* Impostazioni degli slider */
+.slick-slide {
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+}
+
+[dir='rtl'] .slick-slide {
+    float: right;
+}
+
+.slick-slide img {}
+
+/* Nasconde le immagini durante il caricamento */
+.slick-slide.slick-loading img {
+    display: none;
+}
+
+/* Impedisce l'interazione con le immagini durante il trascinamento */
+.slick-slide.dragging img {
+    pointer-events: none;
+}
+
+/* Impostazioni degli slider inizializzati */
+.slick-initialized .slick-slide {
+    display: block;
+}
+
+/* Nasconde gli slider durante il caricamento */
+.slick-loading .slick-slide {
+    visibility: hidden;
+}
+
+/* Impostazioni per gli slider verticali */
+.slick-vertical .slick-slide {
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+}
+
+/* Nasconde le frecce degli slider che sono nascoste */
+.slick-arrow.slick-hidden {
+    display: none;
+}

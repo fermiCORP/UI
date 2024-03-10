@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: otp_verification.js</title>
+
+    <script src="../scripts/prettify/prettify.js"> </script>
+    <script src="../scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="..//styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: otp_verification.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Classe per gestire l'OTP (One Time Password) su una pagina web.
+ */
+class OTPManager {
+    /**
+     * Crea una nuova istanza di OTPManager.
+     * @param {string} inputsSelector - Selettore per gli input dell'OTP.
+     * @param {string} buttonSelector - Selettore per il pulsante associato all'OTP.
+     */
+    constructor(inputsSelector, buttonSelector) {
+        this.inputs = document.querySelectorAll(inputsSelector);
+        this.button = document.querySelector(buttonSelector);
+        this.lastInputStatus = 0; // Stato dell'ultimo input
+    }
+
+    /**
+     * Inizializza il gestore dell'OTP.
+     */
+    init() {
+        this.attachInputEventListeners();
+    }
+
+    /**
+     * Aggiunge gli eventi di input agli elementi dell'OTP.
+     */
+    attachInputEventListeners() {
+        this.inputs.forEach(input => {
+            input.addEventListener('keyup', (e) => {
+                this.handleInputKeyUp(e);
+            });
+        });
+    }
+
+    /**
+     * Gestisce l'evento keyup su un input dell'OTP.
+     * @param {Event} e - L'evento keyup.
+     */
+    handleInputKeyUp(e) {
+        const currentElement = e.target;
+        const nextElement = currentElement.nextElementSibling;
+        const prevElement = currentElement.previousElementSibling;
+
+        if (prevElement &amp;&amp; e.keyCode === 8) { // Verifica se il tasto premuto è il backspace
+            if (this.lastInputStatus === 1) { // Se l'ultimo input era pieno
+                prevElement.value = ''; // Cancella il valore dell'input precedente
+                prevElement.focus(); // Sposta il focus all'input precedente
+            }
+            this.button.setAttribute('disabled', true); // Disabilita il pulsante
+            this.lastInputStatus = 1; // Imposta lo stato dell'ultimo input
+        } else {
+            const reg = /^[0-9]+$/; // Espressione regolare per accettare solo numeri
+            if (!reg.test(currentElement.value)) { // Se il valore non è un numero
+                currentElement.value = currentElement.value.replace(/\D/g, ''); // Rimuovi tutti i caratteri non numerici
+            } else if (currentElement.value) { // Se il valore non è vuoto
+                if (nextElement) {
+                    nextElement.focus(); // Sposta il focus all'input successivo
+                } else {
+                    this.button.removeAttribute('disabled'); // Abilita il pulsante
+                    this.lastInputStatus = 0; // Reimposta lo stato dell'ultimo input
+                }
+            }
+        }
+    }
+}
+
+// Creazione di un'istanza di OTPManager e inizializzazione
+const otpManager = new OTPManager('.otp-card-inputs input', '.otp-card button');
+otpManager.init();
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="../index.html">Home</a></h2>
+    <h3>Index Page Class</h3>
+    <ul>
+        <li><a href="IndexPage.html">Index</a></li>
+    </ul>
+    <h3>Game Details Class</h3>
+    <ul>
+        <li><a href="GameDetailsManager.html">GameSports</a></li>
+    </ul>
+    <h3>Trending Games Class</h3>
+    <ul>
+        <li><a href="TrendingGameList.html">TrendingGameList</a></li>
+        <li><a href="GameTrending.html">GameTrending</a></li>
+    </ul>
+    <h3>Adventure Games Class</h3>
+    <ul>
+        <li><a href="AdventureGameList.html">AdventureGameList</a></li>
+        <li><a href="GameAdventure.html">GameAdventure</a></li>
+    </ul>
+    <h3>Shooter Games Class</h3>
+    <ul>
+        <li><a href="GameShooter.html">GameShooter</a></li>
+        <li><a href="ShooterGameList.html">ShooterGameList</a></li>
+    </ul>
+    <h3>Sports Games Class</h3>
+    <ul>
+        <li><a href="GameSports.html">GameSports</a></li>
+        <li><a href="SportsGameList.html">SportsGameList</a></li>
+    </ul>
+    <h3>Login Class</h3>
+    <ul>
+        <li><a href="LoginManager.html">GameSports</a></li>
+    </ul>
+    <h3>OTP Verification Class</h3>
+    <ul>
+        <li><a href="OTPManager.html">GameSports</a></li>
+    </ul>
+</nav>
+
+<script> prettyPrint(); </script>
+<script src="../scripts/linenumber.js"> </script>
+</body>
+</html>

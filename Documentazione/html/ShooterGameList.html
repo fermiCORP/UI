@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: ShooterGameList</title>
+
+    <script src="../scripts/prettify/prettify.js"></script>
+    <script src="../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Class: ShooterGameList</h1>
+
+    <section>
+
+        <header>
+            <h2><span class="attribs"><span class="type-signature"></span></span>ShooterGameList<span class="signature">(elementId, excludedGames)</span><span class="type-signature"></span></h2>
+            <div class="class-description">Rappresenta una lista di giochi di tipo shooter.</div>
+        </header>
+
+        <article>
+            <div class="container-overview">
+
+                <h2>Constructor</h2>
+
+                <h4 class="name" id="ShooterGameList"><span class="type-signature"></span>new ShooterGameList<span class="signature">(elementId, excludedGames)</span><span class="type-signature"></span></h4>
+
+                <div class="description">
+                    Crea una nuova istanza di ShooterGameList.
+                </div>
+
+                <h5>Parameters:</h5>
+
+                <table class="params">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th class="last">Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="name"><code>elementId</code></td>
+                        <td class="type">
+                            <span class="param-type">string</span>
+                        </td>
+                        <td class="description last">L'ID dell'elemento HTML in cui inserire la lista di giochi.</td>
+                    </tr>
+                    <tr>
+                        <td class="name"><code>excludedGames</code></td>
+                        <td class="type">
+                            <span class="param-type">Array</span>
+                        </td>
+                        <td class="description last">Array contenente i nomi dei giochi da escludere dalla lista.</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <dl class="details">
+                    <dt class="tag-source">Source:</dt>
+                    <dd class="tag-source"><ul class="dummy"><li>
+                        <a href="Giochi_Sparatutto.js.html">Giochi_Sparatutto.js</a>, <a href="Giochi_Sparatutto.js.html#line33">line 33</a>
+                    </li></ul></dd>
+                </dl>
+
+            </div>
+
+            <h3 class="subsection-title">Methods</h3>
+
+            <h4 class="name" id="createListItem"><span class="type-signature"></span>createListItem<span class="signature">(game)</span><span class="type-signature"> &rarr; {HTMLLIElement}</span></h4>
+
+            <div class="description">
+                Crea un elemento della lista per un gioco shooter.
+            </div>
+
+            <h5>Parameters:</h5>
+
+            <table class="params">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th class="last">Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="name"><code>game</code></td>
+                    <td class="type">
+                        <span class="param-type"><a href="GameShooter.html">GameShooter</a></span>
+                    </td>
+                    <td class="description last">Il gioco shooter.</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <dl class="details">
+                <dt class="tag-source">Source:</dt>
+                <dd class="tag-source"><ul class="dummy"><li>
+                    <a href="Giochi_Sparatutto.js.html">Giochi_Sparatutto.js</a>, <a href="Giochi_Sparatutto.js.html#line49">line 49</a>
+                </li></ul></dd>
+            </dl>
+
+            <h5>Returns:</h5>
+
+            <div class="param-desc">
+                Elemento della lista per il gioco shooter.
+            </div>
+
+            <dl>
+                <dt>Type</dt>
+                <dd><span class="param-type">HTMLLIElement</span></dd>
+            </dl>
+
+            <h4 class="name" id="displayGames"><span class="type-signature"></span>displayGames<span class="signature">(games)</span><span class="type-signature"></span></h4>
+
+            <div class="description">
+                Visualizza i giochi shooter nella lista.
+            </div>
+
+            <h5>Parameters:</h5>
+
+            <table class="params">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th class="last">Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="name"><code>games</code></td>
+                    <td class="type">
+                        <span class="param-type">Array</span>
+                    </td>
+                    <td class="description last">Array contenente i giochi shooter da visualizzare.</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <dl class="details">
+                <dt class="tag-source">Source:</dt>
+                <dd class="tag-source"><ul class="dummy"><li>
+                    <a href="Giochi_Sparatutto.js.html">Giochi_Sparatutto.js</a>, <a href="Giochi_Sparatutto.js.html#line92">line 92</a>
+                </li></ul></dd>
+            </dl>
+
+        </article>
+
+    </section>
+
+</div>
+
+<nav>
+    <h2><a href="../index.html">Home</a></h2>
+    <h3>Index Page Class</h3>
+    <ul>
+        <li><a href="IndexPage.html">Index</a></li>
+    </ul>
+    <h3>Game Details Class</h3>
+    <ul>
+        <li><a href="GameDetailsManager.html">GameSports</a></li>
+    </ul>
+    <h3>Trending Games Class</h3>
+    <ul>
+        <li><a href="TrendingGameList.html">TrendingGameList</a></li>
+        <li><a href="GameTrending.html">GameTrending</a></li>
+    </ul>
+    <h3>Adventure Games Class</h3>
+    <ul>
+        <li><a href="AdventureGameList.html">AdventureGameList</a></li>
+        <li><a href="GameAdventure.html">GameAdventure</a></li>
+    </ul>
+    <h3>Shooter Games Class</h3>
+    <ul>
+        <li><a href="GameShooter.html">GameShooter</a></li>
+        <li><a href="ShooterGameList.html">ShooterGameList</a></li>
+    </ul>
+    <h3>Sports Games Class</h3>
+    <ul>
+        <li><a href="GameSports.html">GameSports</a></li>
+        <li><a href="SportsGameList.html">SportsGameList</a></li>
+    </ul>
+    <h3>Login Class</h3>
+    <ul>
+        <li><a href="LoginManager.html">GameSports</a></li>
+    </ul>
+    <h3>OTP Verification Class</h3>
+    <ul>
+        <li><a href="OTPManager.html">GameSports</a></li>
+    </ul>
+</nav>
+
+<script> prettyPrint(); </script>
+<script src="../scripts/linenumber.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<script>
+    // Funzione per creare un link verso la pagina dettagli.html con l'ID del gioco Cyberpunk
+    function createCyberpunkLink() {
+        const apiUrl = 'https://api.rawg.io/api/games?key=360b3c1b1c224703b27b6ca8f75dafb8&search=Cyberpunk%202077&page_size=1';
+
+        axios.get(apiUrl)
+            .then(response => {
+                const cyberpunkGameId = getCyberpunkGameId(response);
+
+                if (cyberpunkGameId) {
+                    const link = document.createElement('a');
+                    link.href = `dettagli.html?gameId=${cyberpunkGameId}`;
+                    link.textContent = 'Scopri Di Più';
+
+                    // Aggiungi il link al tuo elemento HTML desiderato
+                    const buttonContainer = document.querySelector('.home-text');
+                    buttonContainer.appendChild(link);
+                } else {
+                    console.error('Cyberpunk 2077 non trovato nella risposta API');
+                }
+            })
+            .catch(error => {
+                console.error('Errore nella richiesta API per Cyberpunk 2077:', error);
+            });
+    }
+
+    // Chiama la funzione per creare il link quando la pagina è pronta
+    document.addEventListener('DOMContentLoaded', createCyberpunkLink);
+</script>
+
+
+
+
+
+
+
+
+
+
+
